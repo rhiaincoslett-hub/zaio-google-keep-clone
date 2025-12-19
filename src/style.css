@@ -567,10 +567,24 @@ body {
 @media (max-width: 720px) {
   .topBar {
     grid-template-columns: auto auto 1fr auto;
+    padding: 0 8px;
+    gap: 8px;
   }
 
   .brandText {
     display: none;
+  }
+
+  .searchWrap {
+    margin-left: 0;
+  }
+
+  .topBarActions {
+    gap: 2px;
+  }
+
+  .avatar {
+    margin-left: 2px;
   }
 
   .contentShell {
@@ -610,7 +624,111 @@ body {
     pointer-events: auto;
   }
 
+  .main {
+    padding: 16px 12px 60px;
+  }
+
+  .composerWrap {
+    padding: 8px 0 18px;
+  }
+
+  .composerCard {
+    width: 100%;
+  }
+
   .masonry {
     column-count: 1;
+    column-gap: 0;
+    padding: 0;
+  }
+
+  .masonryItem {
+    margin: 0 0 12px;
+  }
+
+  .noteCard {
+    border-radius: 10px;
+  }
+
+  /* Make footer always visible on mobile for easier interaction */
+  .noteFooter {
+    opacity: 1;
+  }
+
+  /* Improve reminder input on mobile */
+  .reminderPicker {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+@media (max-width: 480px) {
+  .topBar {
+    height: 56px;
+    padding: 0 4px;
+  }
+
+  .iconButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .iconButton .materialSymbol {
+    font-size: 20px;
+  }
+
+  .searchWrap {
+    height: 40px;
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .searchInput {
+    font-size: 14px;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .sidebar {
+    width: 260px;
+  }
+
+  .sidebar.open {
+    top: 56px;
+  }
+
+  .backdrop {
+    inset: 56px 0 0 0;
+  }
+
+  .main {
+    padding: 12px 8px 60px;
+  }
+
+  .composerCard {
+    padding: 8px 10px;
+  }
+
+  .composerTitle {
+    font-size: 15px;
+  }
+
+  .composerBody {
+    font-size: 14px;
+  }
+
+  .noteTitle {
+    font-size: 14px;
+  }
+
+  .noteBody {
+    font-size: 13px;
+  }
+
+  .sectionTitle {
+    font-size: 11px;
   }
 }
