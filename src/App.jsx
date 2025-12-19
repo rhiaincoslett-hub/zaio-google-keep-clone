@@ -14,18 +14,18 @@ export default function App() {
   const [viewMode, setViewMode] = useState("grid");
   const [notes, setNotes] = useLocalStorageState("keepClone.notes.v1", []);
 
-  // Enable reminder notifications
+
   useReminderNotifications(notes);
 
   const filtered = useMemo(() => {
     let result = notes;
 
-    // Filter by view
+
     if (currentView === "reminders") {
       result = result.filter((n) => n.reminder !== null && n.reminder !== undefined);
     }
 
-    // Filter by search query
+
     const q = query.trim().toLowerCase();
     if (q) {
       result = result.filter((n) => {

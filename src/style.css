@@ -16,6 +16,7 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -23,6 +24,8 @@ body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
+  width: 100%;
+  position: relative;
 }
 
 .materialSymbol {
@@ -43,6 +46,8 @@ body {
 
 .appShell {
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .topBar {
@@ -566,36 +571,53 @@ body {
 
 @media (max-width: 720px) {
   .topBar {
-    grid-template-columns: auto auto 1fr auto;
-    padding: 0 8px;
-    gap: 8px;
+    grid-template-columns: auto 1fr auto;
+    padding: 0 6px;
+    gap: 6px;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
 
-  .brandText {
+  .brand {
     display: none;
   }
 
   .searchWrap {
     margin-left: 0;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .searchInput {
+    width: 100%;
+    min-width: 0;
   }
 
   .topBarActions {
-    gap: 2px;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .topBarActions .iconButton:not(:last-child) {
+    display: none;
   }
 
   .avatar {
-    margin-left: 2px;
+    margin-left: 0;
   }
 
   .contentShell {
     grid-template-columns: 1fr;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   .sidebar {
     position: fixed;
     top: 64px;
     left: 0;
-    width: 280px;
+    width: 80px;
     transform: translateX(-110%);
     transition: transform 180ms ease;
     z-index: 60;
@@ -604,6 +626,15 @@ body {
 
   .sidebar.open {
     transform: translateX(0);
+  }
+
+  .navItem {
+    grid-template-columns: 40px;
+    justify-items: center;
+  }
+
+  .navLabel {
+    display: none;
   }
 
   .backdrop {
@@ -626,78 +657,103 @@ body {
 
   .main {
     padding: 16px 12px 60px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .composerWrap {
     padding: 8px 0 18px;
+    width: 100%;
   }
 
   .composerCard {
     width: 100%;
+    max-width: 100%;
   }
 
   .masonry {
     column-count: 1;
     column-gap: 0;
     padding: 0;
+    width: 100%;
   }
 
   .masonryItem {
     margin: 0 0 12px;
+    width: 100%;
   }
 
   .noteCard {
     border-radius: 10px;
+    width: 100%;
+    max-width: 100%;
   }
 
-  /* Make footer always visible on mobile for easier interaction */
+ 
   .noteFooter {
     opacity: 1;
   }
 
-  /* Improve reminder input on mobile */
+
   .reminderPicker {
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .topBar {
     height: 56px;
-    padding: 0 4px;
+    padding: 0 6px;
+    gap: 4px;
   }
 
   .iconButton {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
   }
 
   .iconButton .materialSymbol {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .searchWrap {
-    height: 40px;
-    padding: 0 10px;
+    height: 42px;
+    padding: 0 12px;
     gap: 8px;
+    flex: 1;
+    min-width: 0;
   }
 
   .searchInput {
-    font-size: 14px;
+    font-size: 16px;
+    width: 100%;
   }
 
   .avatar {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     font-size: 14px;
+    flex-shrink: 0;
   }
 
   .sidebar {
-    width: 260px;
+    width: 80px;
   }
 
   .sidebar.open {
     top: 56px;
+  }
+
+  .navItem {
+    grid-template-columns: 40px;
+    justify-items: center;
+    padding: 12px 8px;
+  }
+
+  .navLabel {
+    display: none;
   }
 
   .backdrop {
@@ -705,30 +761,34 @@ body {
   }
 
   .main {
-    padding: 12px 8px 60px;
+    padding: 12px 10px 60px;
   }
 
   .composerCard {
-    padding: 8px 10px;
+    padding: 10px 12px;
   }
 
   .composerTitle {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .composerBody {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .noteTitle {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .noteBody {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .sectionTitle {
     font-size: 11px;
+  }
+
+  .centerColumn {
+    max-width: 100%;
   }
 }
