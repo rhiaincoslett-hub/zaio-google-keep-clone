@@ -17,7 +17,10 @@ export default function NoteComposer({ onAdd }) {
   }
 
   function save() {
-    if (!canSave) return;
+    if (!canSave) {
+      reset();
+      return;
+    }
     const reminderTimestamp = reminder ? new Date(reminder).getTime() : null;
     onAdd({
       title: title.trim(),
@@ -109,17 +112,9 @@ export default function NoteComposer({ onAdd }) {
               <button
                 className="ghostButton"
                 type="button"
-                onClick={() => reset()}
+                onClick={() => save()}
               >
                 Close
-              </button>
-              <button
-                className="primaryButton"
-                type="button"
-                onClick={() => save()}
-                disabled={!canSave}
-              >
-                Add
               </button>
             </div>
           </>
