@@ -17,6 +17,8 @@ html,
 body {
   height: 100%;
   overflow-x: hidden;
+  /* iOS Safari fix */
+  min-height: -webkit-fill-available;
 }
 
 body {
@@ -26,6 +28,8 @@ body {
   background: var(--bg);
   width: 100%;
   position: relative;
+  /* iOS Safari fix */
+  min-height: -webkit-fill-available;
 }
 
 .materialSymbol {
@@ -46,6 +50,8 @@ body {
 
 .appShell {
   min-height: 100vh;
+  /* iOS Safari fix */
+  min-height: -webkit-fill-available;
   overflow-x: hidden;
   width: 100%;
 }
@@ -60,8 +66,14 @@ body {
   align-items: center;
   gap: 12px;
   padding: 0 14px;
+  /* iOS safe area support */
+  padding-left: max(14px, env(safe-area-inset-left));
+  padding-right: max(14px, env(safe-area-inset-right));
   background: var(--bar);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  /* iOS Safari sticky fix */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .brand {
@@ -176,14 +188,20 @@ body {
   display: grid;
   grid-template-columns: 280px 1fr;
   min-height: calc(100vh - 64px);
+  /* iOS Safari fix */
+  min-height: calc(-webkit-fill-available - 64px);
 }
 
 .sidebar {
   position: sticky;
   top: 64px;
   height: calc(100vh - 64px);
+  /* iOS Safari fix */
+  height: calc(-webkit-fill-available - 64px);
   padding: 10px 10px 10px 8px;
   overflow: auto;
+  /* iOS Safari scroll fix */
+  -webkit-overflow-scrolling: touch;
   border-right: 1px solid rgba(0, 0, 0, 0.06);
   background: var(--bg);
 }
@@ -235,6 +253,8 @@ body {
 
 .main {
   padding: 20px 18px 60px;
+  /* iOS Safari scroll fix */
+  -webkit-overflow-scrolling: touch;
 }
 
 .centerColumn {
@@ -622,10 +642,15 @@ body {
     transition: transform 180ms ease;
     z-index: 60;
     box-shadow: var(--shadow);
+    /* iOS Safari transform fix */
+    -webkit-transform: translateX(-110%);
+    -webkit-transition: -webkit-transform 180ms ease;
   }
 
   .sidebar.open {
     transform: translateX(0);
+    /* iOS Safari transform fix */
+    -webkit-transform: translateX(0);
   }
 
   .navItem {
@@ -657,6 +682,10 @@ body {
 
   .main {
     padding: 16px 12px 60px;
+    /* iOS safe area support */
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-bottom: max(60px, env(safe-area-inset-bottom));
     width: 100%;
     max-width: 100vw;
     overflow-x: hidden;
@@ -762,6 +791,10 @@ body {
 
   .main {
     padding: 12px 10px 60px;
+    /* iOS safe area support */
+    padding-left: max(10px, env(safe-area-inset-left));
+    padding-right: max(10px, env(safe-area-inset-right));
+    padding-bottom: max(60px, env(safe-area-inset-bottom));
   }
 
   .composerCard {
